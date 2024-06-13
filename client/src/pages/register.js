@@ -1,5 +1,6 @@
-import Layout from "../components/layout"
 import { useState } from 'react'
+import { onRegistration } from '../api/auth'
+import Layout from '../components/layout'
 
 const Register = () => {
     const [values, setValues] = useState({
@@ -7,19 +8,30 @@ const Register = () => {
         password: '',
     })
 const [error, setError] = useState(false)
-const [success, setSucess] = useState(false)
+const [success, setSuccess] = useState(false)
 
 const onChange = (e) => {
-
+setValues({...values,[e.target.name]: e.target.value})
 }
 
-const onSubmit = (e) => {
+const onSubmit = async (e) => {
     e.preventDefault()
+
+    try {
+        const { data } = await onRegistration(values)
+
+        setError('')
+        setSuccess(data.message)
+        setValues({ email: '', password: '' })
+    } catch (err) {
+        console.log(err.response.data.errors[0].msg)
+        setError(err.response.data.errors[0].msg)
+    }
 }
 
     return (
         <Layout>
-            <form onSumbit={(e) => onSubmit(e)} className='container mt-3'>
+            <form onSubmit={(e) => onSubmit(e)} className='container mt-3'>
                 <h1>Register</h1>
 
                 <div className='mb-3'>
@@ -54,8 +66,11 @@ const onSubmit = (e) => {
                     />
                 </div>
 
+                <div style={{color:'red', margin: '10px 0'}}>{error}</div>
+                <div style={{ color: 'green', margin: '10px 0' }}>{success}</div>
+
                 <button type="submit" className="btn btn-primary">
-                    Submit
+                    Register
                 </button>
             </form>
         </Layout>
