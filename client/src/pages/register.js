@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { onRegistration } from '../api/auth'
+import { onRegistration, onLogin } from '../api/auth'
 import Layout from '../components/layout'
+import { useDispatch } from 'react-redux'
+import { authenticateUser } from '../redux/slices/authSlice'
 
 const Register = () => {
     const [values, setValues] = useState({
@@ -14,6 +16,7 @@ const onChange = (e) => {
 setValues({...values,[e.target.name]: e.target.value})
 }
 
+const dispatch = useDispatch()
 const onSubmit = async (e) => {
     e.preventDefault()
 
@@ -23,6 +26,11 @@ const onSubmit = async (e) => {
         setError('')
         setSuccess(data.message)
         setValues({ email: '', password: '' })
+
+        await onLogin(values)
+        dispatch(authenticateUser())
+
+        localStorage.setItem('isAuth', 'true')
     } catch (err) {
         console.log(err.response.data.errors[0].msg)
         setError(err.response.data.errors[0].msg)
