@@ -1,7 +1,7 @@
 const { Pool } = require('pg')
 const { PASSWORD } = require('../constants')
 const pool = new Pool ({
-    user: 'wbovatsek',
+    user: 'postgres',
     host: 'localhost',
     database: 'pern_auth',
     password: PASSWORD,
