@@ -22,7 +22,7 @@ const Dashboard = () => {
 
   const protectedInfo = async () => {
     try {
-      const { data } = await fetchProtectedInfo()
+      const { data } = await fetchCourseInfo()
 
       setProtectedData(data.info)
 

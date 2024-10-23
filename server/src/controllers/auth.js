@@ -59,16 +59,6 @@ let payload = {
 }
 
 exports.protected = async (req, res) => {
-    try {
-        return res.status(200).json({
-            info: 'protected info'
-        })
-    } catch (err) {
-        console.error(err);
-    }
-}
-
-exports.courseInfo = async (req, res) => {
     let identifier = {
         id: req.user.id,
         email: req.user.email
@@ -97,5 +87,47 @@ exports.logout = async (req, res) => {
         return res.status(500).json({
             error: err
         })
+    }
+}
+
+exports.getCourses = async (req, res) => {
+    let identifier = {
+        id: req.user.id,
+        email: req.user.email
+    }
+    try {
+        const user = await db.query('SELECT * FROM users WHERE user_id = $1', 
+            [identifier.id]
+        );
+
+        return res.status(200).json({
+            info: user.rows[0].courses
+        })
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+exports.addCourses = async (req, res) => {
+    let identifier = {
+        id: req.user.id,
+        email: req.user.email
+    }
+    const {courses} = req.body
+    console.log(courses)
+    try {
+
+        await db.query('UPDATE users SET courses = $1 WHERE user_id = $2', 
+            [courses, identifier.id]
+        );
+        return res.status(200).json({
+            success: true,
+            message: 'Course added'
+        })
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({
+            error: err.message
+        });
     }
 }

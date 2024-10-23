@@ -22,7 +22,7 @@ const Account = () => {
 
   const protectedInfo = async () => {
     try {
-      const { data } = await fetchCourseInfo()
+      const { data } = await fetchProtectedInfo()
 
       setProtectedData(data.info)
 

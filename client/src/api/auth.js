@@ -21,5 +21,5 @@ export async function fetchProtectedInfo() {
 }
 
 export async function fetchCourseInfo(){
-  return await axios.get('http://localhost:8000/api/course-info')
+  return await axios.get('http://localhost:8000/api/get-courses')
 }
