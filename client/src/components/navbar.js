@@ -7,20 +7,29 @@ const Navbar = () => {
   return (
     <nav className='navbar navbar-light bg-light'>
       <div className='container'>
-        <div>
-          <NavLink to='/'>
-            <span className='navbar-brand mb-0 h1'>Home</span>
-          </NavLink>
-        </div>
+
 
         {isAuth ? (
           <div>
             <NavLink to='/dashboard' className='mx-3'>
               <span>Dashboard</span>
             </NavLink>
+            <NavLink to='/courses' className='mx-3'>
+              <span>Courses</span>
+            </NavLink>
+            <NavLink to='/your-forest' className='mx-3'>
+              <span>Your Forest</span>
+            </NavLink>
+            <NavLink to='/account' className='mx-3'>
+              <span>Account</span>
+            </NavLink>
           </div>
         ) : (
           <div>
+            <NavLink to='/'>
+            <span className='navbar-brand mb-0 h1'>Home</span>
+            </NavLink>
+
             <NavLink to='/login'>
               <span>Login</span>
             </NavLink>

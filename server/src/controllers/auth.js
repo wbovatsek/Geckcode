@@ -16,12 +16,12 @@ exports.getUsers = async (req, res) => {
 }
 
 exports.register = async (req, res) => {
-    const {email, password} = req.body;
+    const {email, password, username} = req.body;
     try {
         const hashedPassword = await hash(password, 10);
 
-        await db.query('INSERT INTO users(email, password) VALUES($1, $2)', 
-            [email, hashedPassword]
+        await db.query('INSERT INTO users(email, password, username) VALUES($1, $2, $3)', 
+            [email, hashedPassword, username]
         );
 
         return res.status(200).json({
@@ -31,7 +31,7 @@ exports.register = async (req, res) => {
     } catch (err) {
         console.error(err);
         return res.status(500).json({
-            error: error.message
+            error: err.message
         });
     }
 }
@@ -62,6 +62,23 @@ exports.protected = async (req, res) => {
     try {
         return res.status(200).json({
             info: 'protected info'
+        })
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+exports.courseInfo = async (req, res) => {
+    let identifier = {
+        id: req.user.id,
+        email: req.user.email
+    }
+    try {
+        const user = await db.query('SELECT * FROM users WHERE user_id = $1', 
+            [identifier.id]
+        );
+        return res.status(200).json({
+            info: user.rows[0].username
         })
     } catch (err) {
         console.error(err);

@@ -8,6 +8,7 @@ const Register = () => {
     const [values, setValues] = useState({
         email: '',
         password: '',
+        username: '',
     })
 const [error, setError] = useState(false)
 const [success, setSuccess] = useState(false)
@@ -70,6 +71,22 @@ const onSubmit = async (e) => {
                         id="password"
                         name="password"
                         placeholder="password"
+                        required
+                    />
+                </div>
+
+                <div className='mb-3'>
+                    <label htmlFor='username' className='form-label'>
+                        Username
+                    </label>
+                    <input 
+                        onChange={(e) => onChange(e)}
+                        type="username"
+                        value={values.username}
+                        className="form-control"
+                        id="username"
+                        name="username"
+                        placeholder="username"
                         required
                     />
                 </div>
