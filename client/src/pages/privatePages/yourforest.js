@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/layout';
 import { fetchLoginStreak } from '../../api/auth';
-import './YourForest.css'; // Import the new CSS file
+import './YourForest.css'; 
 
-// Simple Tree component
 const Tree = () => {
   const treeImages = ['/images/tree1.png', '/images/tree4.png', '/images/tree3.png'];
 
@@ -16,7 +15,6 @@ const Tree = () => {
   );
 };
 
-// Utility function to randomly select grid cells for trees
 const getRandomTreePositions = (gridSize, treeCount) => {
   const positions = new Set();
   while (positions.size < treeCount) {
@@ -26,7 +24,6 @@ const getRandomTreePositions = (gridSize, treeCount) => {
   return positions;
 };
 
-// Forest component that renders trees based on login streak
 const YourForest = () => {
   const [treeCount, setTreeCount] = useState(0);
   const [gridSize] = useState(36);

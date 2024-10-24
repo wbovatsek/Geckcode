@@ -4,9 +4,8 @@ import { fetchCourseInfo, onLogout, addCourses } from '../../api/auth';
 import Layout from '../../components/layout';
 import { unauthenticateUser } from '../../redux/slices/authSlice';
 import { Link } from 'react-router-dom';
-import './Dashboard.css'; // Import custom styles
+import './Dashboard.css'; 
 
-// Courses and Lessons Component
 const CoursesAndLessons = ({ courses }) => {
   const selectedCourses = courses.filter((course) => course.checked);
 

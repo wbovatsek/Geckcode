@@ -10,7 +10,7 @@ const Login = () => {
         password: '',
     })
     const [error, setError] = useState(false)
-    const [loginStreak, setLoginStreak] = useState(null) // State for login streak
+    const [loginStreak, setLoginStreak] = useState(null) 
 
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value })
@@ -21,9 +21,9 @@ const Login = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await onLogin(values) // Call login API
+            const response = await onLogin(values)
 
-            setLoginStreak(response.loginStreak) // Capture login streak from response
+            setLoginStreak(response.loginStreak) 
             dispatch(authenticateUser())
             localStorage.setItem('isAuth', 'true')
         } catch (err) {
@@ -69,10 +69,8 @@ const Login = () => {
                     />
                 </div>
 
-                {/* Error message */}
                 <div style={{ color: 'red', margin: '10px 0' }}>{error}</div>
 
-                {/* Login streak message */}
                 {loginStreak !== null && (
                     <div style={{ color: 'green', margin: '10px 0' }}>
                         You have logged in for {loginStreak} consecutive days!

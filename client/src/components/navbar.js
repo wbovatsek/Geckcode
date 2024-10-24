@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import './Navbar.css'; // Import custom CSS for the navbar
+import './Navbar.css';
 
 const Navbar = () => {
   const { isAuth } = useSelector((state) => state.auth);
@@ -8,14 +8,10 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg custom-navbar">
       <div className="container">
-        {/* Brand or Home with Logo */}
         <NavLink to="/" className="navbar-brand d-flex align-items-center">
-          {/* App Logo */}
           <img src="/images/logo.png" alt="App Logo" className="navbar-logo" />
-          {/* App Name */}
         </NavLink>
 
-        {/* Links */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             {isAuth ? (

@@ -48,39 +48,31 @@ exports.login = async (req, res) => {
     try {
       const today = new Date();
       
-      // Check the user's last login and login streak
       const userData = await db.query('SELECT last_login_date, login_streak FROM users WHERE user_id = $1', [user.user_id]);
       
       let lastLogin = userData.rows[0].last_login_date;
       let loginStreak = userData.rows[0].login_streak;
   
-      // If user has logged in before, check the difference in days
       if (lastLogin) {
         const daysSinceLastLogin = differenceInDays(today, new Date(lastLogin));
   
         if (daysSinceLastLogin === 1) {
-          // If it's the next day, increment the login streak
           loginStreak += 1;
         } else if (daysSinceLastLogin > 1) {
-          // If it's more than 1 day, reset the streak
           loginStreak = 1;
         }
-        // If they logged in the same day, do nothing with the streak
       } else {
-        // First time login, initialize login streak
         loginStreak = 1;
       }
   
-      // Update the user's last login date and login streak
       await db.query('UPDATE users SET last_login_date = $1, login_streak = $2 WHERE user_id = $3', [today, loginStreak, user.user_id]);
   
-      // Generate token for login
       const token = await sign(payload, SECRET);
   
       return res.status(200).cookie('token', token, {httpOnly: true}).json({
         success: true,
         message: 'Logged in successfully',
-        loginStreak: loginStreak // Return the updated login streak
+        loginStreak: loginStreak 
       });
     } catch (err) {
       console.error(err);
@@ -164,7 +156,7 @@ exports.addCourses = async (req, res) => {
 }
 
 exports.getStreak = async (req, res) => {
-    const userId = req.user.id; // Assuming you have middleware to extract the user's ID
+    const userId = req.user.id; 
   
     try {
       const user = await db.query('SELECT login_streak FROM users WHERE user_id = $1', [userId]);

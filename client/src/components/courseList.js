@@ -1,4 +1,3 @@
-// components/CourseList.js
 const CourseList = ({ courses }) => {
   return (
     <div>

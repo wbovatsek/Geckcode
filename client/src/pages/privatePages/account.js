@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { fetchLoginStreak, fetchProtectedInfo, onLogout } from '../../api/auth';
 import Layout from '../../components/layout';
 import { unauthenticateUser } from '../../redux/slices/authSlice';
-import './Account.css'; // Import the new CSS file
+import './Account.css';
 
 const Account = () => {
   const dispatch = useDispatch();

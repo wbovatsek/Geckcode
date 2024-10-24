@@ -1,5 +1,5 @@
 import Layout from "../components/layout";
-import './Home.css'; // Importing custom CSS for styling
+import './Home.css';
 
 const Home = () => {
   return (

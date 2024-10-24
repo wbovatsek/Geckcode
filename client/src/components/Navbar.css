@@ -1,8 +1,5 @@
-/* Navbar.css */
-
-/* Styling for the brand title */
 .custom-navbar {
-    background-color: #45523E; /* Example custom green background color */
+    background-color: #45523E;
 }
 .navbar-title {
     font-size: 1.5rem;
@@ -11,27 +8,26 @@
   }
   
   .navbar-logo {
-    width: 150px; /* Adjust the logo size */
-    height: auto; /* Keep the aspect ratio */
+    width: 150px;
+    height: auto; 
   }
-  /* Style the nav links */
+
   .navbar-nav .nav-link {
     font-size: 1.1rem;
-    color: #f5ECE5; /* Default link color */
+    color: #f5ECE5; 
     margin-right: 15px;
     transition: color 0.3s ease-in-out;
   }
   
   .navbar-nav .nav-link:hover {
-    color: #f5ECE5; /* Change color on hover */
+    color: #f5ECE5; 
   }
   
   .navbar-nav .nav-link.active {
-    color: #f5ECE5; /* Highlight the active link */
+    color: #f5ECE5; 
     font-weight: bold;
   }
   
-  /* Spacing for mobile toggle icon */
   .navbar-toggler {
     border-color: transparent;
   }

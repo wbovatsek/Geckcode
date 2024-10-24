@@ -9,8 +9,6 @@ const Lesson = () => {
     <Layout>
       <h1>Lesson {lessonId}</h1>
       <p>Content for lesson {lessonId} will go here.</p>
-
-      {/* Embedded YouTube Video */}
       <div className="lesson-video">
         <iframe
           width="600"
