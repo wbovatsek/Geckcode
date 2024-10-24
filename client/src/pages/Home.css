@@ -1,0 +1,50 @@
+/* Home.css */
+
+/* Main container styling */
+.home-container {
+    padding: 40px;
+    background-color: #B0ACA2; /* Background inside the main background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 800px;
+    margin: 40px auto;
+  }
+  
+  /* Title styling */
+  .home-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #010101; /* Dark text color inside light background */
+    margin-bottom: 20px;
+  }
+  
+  /* Message section */
+  .home-message {
+    background-color: #F5ECE5; /* Light background for the message */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    color: #010101; /* Dark text color inside light background */
+  }
+  
+  /* Forest Feature section */
+  .home-feature {
+    background-color: #45523E; /* Misc background */
+    padding: 20px;
+    border-radius: 10px;
+    color: #F5ECE5; /* Light text color inside dark background */
+  }
+  
+  /* Feature title */
+  .home-feature h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Paragraphs */
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  

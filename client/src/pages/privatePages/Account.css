@@ -1,0 +1,46 @@
+/* Account.css */
+
+/* Container for account details */
+.account-container {
+    padding: 20px;
+    background-color: #B0ACA2; /* Background inside the main background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for cleaner look */
+    text-align: center; /* Center the content */
+    max-width: 600px; /* Limit the width of the account container */
+    margin: 20px auto; /* Center the container on the page */
+  }
+  
+  /* Account Title Styling */
+  .account-title {
+    font-size: 2.5rem;
+    color: #010101; /* Dark text color inside light background */
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  /* Protected data (user info) styling */
+  .account-data {
+    font-size: 30px;
+    color: #010101; /* Dark text color inside light background */
+    margin-bottom: 10px;
+  }
+  
+  /* Logout button */
+  .logout-btn {
+    background-color: #45523E; /* Misc background for button */
+    color: #F5ECE5; /* Light text color inside dark background */
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect for the button */
+  .logout-btn:hover {
+    background-color: #B0ACA2; /* Hover effect with background color change */
+    color: #010101; /* Dark text on light background when hovered */
+  }
+  

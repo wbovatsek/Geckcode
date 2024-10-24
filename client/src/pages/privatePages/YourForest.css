@@ -1,0 +1,51 @@
+/* Container for the forest */
+.forest-container {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #68af7f; /* Light background for the whole container */
+    color: #2c3e50;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slight shadow around the forest container */
+  }
+  
+  /* Grid layout for forest */
+  .forest-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6x6 grid */
+    max-width: 600px; /* Limit the grid width */
+    margin: 0 auto; /* Center the grid */
+    gap: 10px; /* Space between grid boxes */
+  }
+  
+  /* Individual grid boxes */
+  .grid-box {
+    background-color: #68af7f; /* Light green background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1; /* Square boxes */
+    border: 2px solid #529561; /* Dark green border */
+    border-radius: 10px; /* Slight rounding for smoother look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Tree hover effect */
+  .grid-box:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  }
+  
+  /* Tree images */
+  .tree img {
+    width: 100px; /* Adjust the tree size */
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Tree hover animation */
+  .tree img:hover {
+    transform: translateY(-5px); /* Bounce up effect */
+  }
+  
