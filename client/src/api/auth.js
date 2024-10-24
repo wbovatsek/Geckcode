@@ -9,7 +9,8 @@ export async function onRegistration(registrationData) {
 }
 
 export async function onLogin(loginData) {
-  return await axios.post('http://localhost:8000/api/login', loginData)
+    const response = await axios.post('http://localhost:8000/api/login', loginData);
+    return response.data;
 }
 
 export async function onLogout() {
@@ -23,3 +24,11 @@ export async function fetchProtectedInfo() {
 export async function fetchCourseInfo(){
   return await axios.get('http://localhost:8000/api/get-courses')
 }
+
+export async function addCourses(courseData){
+  return await axios.post('http://localhost:8000/api/add-courses', courseData)
+}
+
+export async function fetchLoginStreak(){
+    return await axios.get('http://localhost:8000/api/login-streak');
+};

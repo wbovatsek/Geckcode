@@ -14,9 +14,6 @@ const Navbar = () => {
             <NavLink to='/dashboard' className='mx-3'>
               <span>Dashboard</span>
             </NavLink>
-            <NavLink to='/courses' className='mx-3'>
-              <span>Courses</span>
-            </NavLink>
             <NavLink to='/your-forest' className='mx-3'>
               <span>Your Forest</span>
             </NavLink>

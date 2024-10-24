@@ -9,25 +9,28 @@ const Login = () => {
         email: '',
         password: '',
     })
-const [error, setError] = useState(false)
+    const [error, setError] = useState(false)
+    const [loginStreak, setLoginStreak] = useState(null) // State for login streak
 
-const onChange = (e) => {
-setValues({...values,[e.target.name]: e.target.value})
-}
-
-const dispatch = useDispatch()
-const onSubmit = async (e) => {
-    e.preventDefault()
-    try {
-        await onLogin(values)
-        dispatch(authenticateUser())
-
-        localStorage.setItem('isAuth', 'true')
-    } catch (err) {
-        console.log(err.response.data.errors[0].msg)
-        setError(err.response.data.errors[0].msg)
+    const onChange = (e) => {
+        setValues({ ...values, [e.target.name]: e.target.value })
     }
-}
+
+    const dispatch = useDispatch()
+
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const response = await onLogin(values) // Call login API
+
+            setLoginStreak(response.loginStreak) // Capture login streak from response
+            dispatch(authenticateUser())
+            localStorage.setItem('isAuth', 'true')
+        } catch (err) {
+            console.log(err.response.data.errors[0].msg)
+            setError(err.response.data.errors[0].msg)
+        }
+    }
 
     return (
         <Layout>
@@ -40,12 +43,12 @@ const onSubmit = async (e) => {
                     </label>
                     <input
                         onChange={(e) => onChange(e)}
-                        type = 'email'
-                        className = 'form-control'
-                        id = 'email'
-                        name = 'email'
-                        value = {values.email}
-                        placeholder = 'test@gmail.com'
+                        type='email'
+                        className='form-control'
+                        id='email'
+                        name='email'
+                        value={values.email}
+                        placeholder='test@gmail.com'
                         required
                     />
                 </div>
@@ -54,21 +57,29 @@ const onSubmit = async (e) => {
                     <label htmlFor='password' className='form-label'>
                         Password
                     </label>
-                    <input 
+                    <input
                         onChange={(e) => onChange(e)}
-                        type="password"
+                        type='password'
                         value={values.password}
-                        className="form-control"
-                        id="password"
-                        name="password"
-                        placeholder="password"
+                        className='form-control'
+                        id='password'
+                        name='password'
+                        placeholder='password'
                         required
                     />
                 </div>
 
-                <div style={{color:'red', margin: '10px 0'}}>{error}</div>
+                {/* Error message */}
+                <div style={{ color: 'red', margin: '10px 0' }}>{error}</div>
 
-                <button type="submit" className="btn btn-primary">
+                {/* Login streak message */}
+                {loginStreak !== null && (
+                    <div style={{ color: 'green', margin: '10px 0' }}>
+                        You have logged in for {loginStreak} consecutive days!
+                    </div>
+                )}
+
+                <button type='submit' className='btn btn-primary'>
                     Login
                 </button>
             </form>
